@@ -1,16 +1,18 @@
 import Heading from "../Heading";
 import Container from "../Container";
 
-import s from "./Slider.module.css";
+import s from "./Slider.module.scss";
 
 import logoPng from "../../assets/logo.png";
 
 const Slider = () => {
+  let count = 1;
+
   return (
     <section className={s.section}>
       <div className={s.slider}>
         <Container className={s.sliderContent}>
-          <Heading level={1}>Это заголовок!</Heading>
+          <Heading isBackLine>Это заголовок!</Heading>
           <Heading level={6} isBlack>
             Wow.Wow.Wow
           </Heading>
