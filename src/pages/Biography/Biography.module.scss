@@ -2,8 +2,7 @@
   width: 100%;
 }
 
-.slider {
-  background: #333;
+.biography {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +17,7 @@
   overflow: hidden;
 }
 
-.sliderContent {
+.biographyContent {
   padding: 64px 0 64px 0;
   display: flex;
   flex-direction: column;
@@ -41,9 +40,11 @@
   text-align: center;
   margin: 15px auto 0;
 }
+.text {
+  background: #fff;
+}
 
 .call {
-  color: white;
   display: block;
   margin-bottom: 20px;
 }

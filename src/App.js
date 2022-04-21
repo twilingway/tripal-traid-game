@@ -8,6 +8,7 @@ import Container from "./components/Container";
 import Heading from "./components/Heading";
 import CharacterCard from "./components/CharacterCard";
 import { useState } from "react";
+import Biography from "./pages/Biography";
 
 const CHARACTER = [
   {
@@ -80,6 +81,11 @@ const CHARACTER = [
 
 function App() {
   const [character, setCharacter] = useState(CHARACTER);
+  const [bioId, setBioId] = useState(null);
+
+  const handleReadBioClick = (id) => {
+    setBioId(id);
+  };
 
   const handleLikeClick = (id) => {
     setCharacter((prev) =>
@@ -91,10 +97,18 @@ function App() {
       })
     );
   };
+
+  const handleBackClick = () => {
+    setBioId(null);
+  };
   return (
     <>
       <Header />
-      <Slider />
+      {bioId ? (
+        <Biography id={bioId} onBackClick={handleBackClick} />
+      ) : (
+        <Slider />
+      )}
       <section className={s.cardSection}>
         <Container>
           <div className={s.cardTitle}>
@@ -117,6 +131,7 @@ function App() {
                     id={item.id}
                     isLike={item.isLike}
                     onLikeClick={handleLikeClick}
+                    onReadBioClick={handleReadBioClick}
                   />
                 </div>
               );

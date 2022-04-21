@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Heading from "../Heading";
 import Text from "../Text";
@@ -15,6 +15,7 @@ export default function CharacterCard({
   id,
   onLikeClick,
   isLike,
+  onReadBioClick,
 }) {
   const handleClick = () => {
     onLikeClick(id);
@@ -39,7 +40,9 @@ export default function CharacterCard({
             <Like />
           </div>
           <div className={s.readBio}>
-            <a href="#">ReadBio</a>
+            <a href="#" onClick={() => onReadBioClick(id)}>
+              ReadBio
+            </a>
           </div>
         </div>
       </div>
@@ -59,4 +62,5 @@ CharacterCard.propTypes = {
   id: PropTypes.number,
   onLikeClick: PropTypes.func,
   isLike: PropTypes.bool,
+  onReadBioClick: PropTypes.func,
 };
