@@ -15,24 +15,28 @@ const propTypes = {
 
 const defaultProps = {};
 
-const getBio = (item) => {
+const getBio = (item, id) => {
   switch (item.type) {
     case "h1":
       return (
-        <Heading level={1} isBlack>
+        <Heading key={id} level={1} isBlack>
           {item.text}
         </Heading>
       );
     case "h2":
       return (
-        <Heading level={2} isBlack>
+        <Heading key={id} level={2} isBlack>
           {item.text}
         </Heading>
       );
     case "paragraph":
-      return <Text className={s.text}>{item.text}</Text>;
+      return (
+        <Text key={id} className={s.text}>
+          {item.text}
+        </Text>
+      );
     case "img":
-      return <Image src={item.src} alt={item.type} />;
+      return <Image key={id} src={item.src} alt={item.type} />;
 
     default:
       break;
@@ -49,7 +53,7 @@ const Biography = ({ id, onBackClick }) => {
           <Button isBlack onClick={onBackClick}>
             Go Back
           </Button>
-          {data[id].map((item) => getBio(item))}
+          {data[id].map((item, index) => getBio(item, index))}
         </Container>
       </div>
     </section>
