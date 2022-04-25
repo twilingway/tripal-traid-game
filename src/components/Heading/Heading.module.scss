@@ -4,6 +4,20 @@
   color: #fff;
   margin-bottom: 0.5em;
   font-weight: 600;
+
+  &.backLine {
+    text-align: center;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 30%;
+      position: relative;
+      border-bottom: 1px solid #aaa;
+      text-align: center;
+      margin: 15px auto 0;
+    }
+  }
 }
 
 .colorBlack {

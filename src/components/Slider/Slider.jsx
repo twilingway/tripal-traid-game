@@ -1,25 +1,31 @@
 import Heading from "../Heading";
 import Container from "../Container";
 
-import s from "./Slider.module.css";
+import s from "./Slider.module.scss";
 
 import logoPng from "../../assets/logo.png";
+import Button from "../Button/Button";
+import Image from "../Image";
 
 const Slider = () => {
+  let count = 1;
+
   return (
     <section className={s.section}>
       <div className={s.slider}>
         <Container className={s.sliderContent}>
-          <Heading level={1}>Это заголовок!</Heading>
-          <Heading level={6} isBlack>
+          <Heading isBackLine isBlack={false}>
+            Triple Triad Game
+          </Heading>
+          <Heading level={6} isBlack={false}>
             Wow.Wow.Wow
           </Heading>
           <Heading level={2} />
           <div className={s.image}>
-            <img src={logoPng} alt="Logo" />
+            <Image src={logoPng} alt="Logo" />
           </div>
           <div className={s.call}>
-            <button className={s.button}>Wow</button>
+            <Button>Wow</Button>
           </div>
         </Container>
       </div>
