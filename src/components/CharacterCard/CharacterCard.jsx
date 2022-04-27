@@ -17,8 +17,6 @@ export default function CharacterCard({
   onLikeClick,
   isLike,
 }) {
-  const location = useLocation();
-  console.log("location :>> ", location);
   const handleClick = () => {
     onLikeClick(id);
   };
@@ -42,15 +40,7 @@ export default function CharacterCard({
             <Like />
           </div>
           <div className={s.readBio}>
-            <Link
-              to={
-                location.pathname.includes("characters")
-                  ? `${id}`
-                  : `characters/${id}`
-              }
-            >
-              ReadBio
-            </Link>
+            <Link to={`/characters/${id}`}>ReadBio</Link>
           </div>
         </div>
       </div>
