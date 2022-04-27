@@ -1,19 +1,12 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { BIO } from "./data";
-import s from "./Biography.module.scss";
+import { useNavigate, useParams } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Container from "../../components/Container";
 import Heading from "../../components/Heading";
-import Text from "../../components/Text";
 import Image from "../../components/Image";
-
-const propTypes = {
-  id: PropTypes.number.isRequired,
-  onBackClick: PropTypes.func.isRequired,
-};
-
-const defaultProps = {};
+import Text from "../../components/Text";
+import s from "./Biography.module.scss";
+import { BIO } from "./data";
 
 const getBio = (item, id) => {
   switch (item.type) {
@@ -43,14 +36,16 @@ const getBio = (item, id) => {
   }
 };
 
-const Biography = ({ id, onBackClick }) => {
+const Biography = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [data] = useState(BIO);
 
   return (
     <section className={s.section}>
       <div className={s.biography}>
         <Container className={s.biographyContent}>
-          <Button isBlack onClick={onBackClick}>
+          <Button isBlack onClick={() => navigate(-1, { replace: true })}>
             Go Back
           </Button>
           {data[id].map((item, index) => getBio(item, index))}
@@ -59,8 +54,5 @@ const Biography = ({ id, onBackClick }) => {
     </section>
   );
 };
-
-Biography.propTypes = propTypes;
-Biography.defaultProps = defaultProps;
 
 export default Biography;

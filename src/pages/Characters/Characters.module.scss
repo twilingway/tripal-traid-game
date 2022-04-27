@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  background: #f7f7f7;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+}

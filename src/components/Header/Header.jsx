@@ -1,9 +1,16 @@
+import cn from "classnames";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import logoPng from "../../assets/logo.png";
 import Container from "../Container";
 import s from "./Header.module.scss";
-import logoPng from "../../assets/logo.png";
-import { useEffect, useState } from "react";
-import cn from "classnames";
-const MENU = ["Menu 1", "Menu 2", "Menu 3", "Menu 4"];
+
+const MENU = [
+  { name: "Main", url: "/" },
+  { name: "Characters", url: "/characters" },
+  { name: "About", url: "/about" },
+  { name: "Contacts", url: "/contacts" },
+];
 
 const Header = () => {
   const [small, setSmall] = useState(0);
@@ -33,7 +40,7 @@ const Header = () => {
           <ul className={s.nav}>
             {MENU.map((item, index) => (
               <li key={index}>
-                <a href="#">{item}</a>
+                <Link to={item.url}>{item.name}</Link>
               </li>
             ))}
           </ul>
