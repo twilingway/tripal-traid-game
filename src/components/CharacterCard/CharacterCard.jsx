@@ -6,7 +6,7 @@ import Text from "../Text";
 import { ReactComponent as Like } from "./assets/heart.svg";
 import cn from "classnames";
 import s from "./CharacterCard.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function CharacterCard({
   name,
@@ -17,6 +17,8 @@ export default function CharacterCard({
   onLikeClick,
   isLike,
 }) {
+  const location = useLocation();
+  console.log("location :>> ", location);
   const handleClick = () => {
     onLikeClick(id);
   };
@@ -40,7 +42,15 @@ export default function CharacterCard({
             <Like />
           </div>
           <div className={s.readBio}>
-            <Link to={`${id}`}>ReadBio</Link>
+            <Link
+              to={
+                location.pathname.includes("characters")
+                  ? `${id}`
+                  : `characters/${id}`
+              }
+            >
+              ReadBio
+            </Link>
           </div>
         </div>
       </div>
