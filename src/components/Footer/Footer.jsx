@@ -3,11 +3,11 @@ import s from "./Footer.module.scss";
 
 const Footer = () => {
   return (
-    <footer className="root">
+    <footer className={s.root}>
       <Container>
-        <div className="footerWrap">
+        <div className={s.footerWrap}>
           Coded with
-          <span className="heart"></span>
+          <span className={s.heart}></span>
           by You
         </div>
       </Container>
