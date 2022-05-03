@@ -1,12 +1,20 @@
-import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {
+  Link,
+  Navigate,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Container from "../../components/Container";
 import Heading from "../../components/Heading";
 import Image from "../../components/Image";
 import Text from "../../components/Text";
-import s from "./Biography.module.scss";
+import { ScrollToTopOnMount } from "../Characters/Characters";
+import { ReactComponent as LinkSvg } from "../../assets/link_icon.svg";
 import { BIO } from "./data";
+import s from "./Biography.module.scss";
 
 const getBio = (item, id) => {
   switch (item.type) {
@@ -18,9 +26,14 @@ const getBio = (item, id) => {
       );
     case "h2":
       return (
-        <Heading key={id} level={2} isBlack>
-          {item.text}
-        </Heading>
+        <div key={id}>
+          <Heading level={2} isBlack className={s.heading}>
+            {item.text}
+            <Link to={`#${item.text}`} id={`#${item.text}`}>
+              <LinkSvg />
+            </Link>
+          </Heading>
+        </div>
       );
     case "paragraph":
       return (
@@ -38,8 +51,32 @@ const getBio = (item, id) => {
 
 const Biography = () => {
   const { id } = useParams();
+
   const navigate = useNavigate();
+  const { hash, pathname } = useLocation();
+
   const [data] = useState(BIO);
+
+  useEffect(() => {
+    const handleLoad = () => {
+      const element = document.getElementById(decodeURIComponent(hash));
+
+      if (element) {
+        element.scrollIntoView({
+          block: "center",
+          behavior: "smooth",
+        });
+      }
+    };
+    if (hash) {
+      window.addEventListener("load", handleLoad);
+    }
+    return () => window.removeEventListener("load", handleLoad);
+  }, [hash, pathname, id]);
+
+  if (!data[id]) {
+    return <Navigate to="/characters" />;
+  }
 
   return (
     <section className={s.section}>

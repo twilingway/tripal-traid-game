@@ -1,12 +1,11 @@
-import React from "react";
+import cn from "classnames";
 import PropTypes from "prop-types";
+import React from "react";
+import { Link } from "react-router-dom";
 import Heading from "../Heading";
 import Text from "../Text";
-
 import { ReactComponent as Like } from "./assets/heart.svg";
-import cn from "classnames";
 import s from "./CharacterCard.module.scss";
-import { Link, useLocation } from "react-router-dom";
 
 export default function CharacterCard({
   name,

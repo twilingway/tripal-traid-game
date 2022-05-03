@@ -1,6 +1,5 @@
 import { useState } from "react";
 import CharacterCard from "../../components/CharacterCard";
-import Container from "../../components/Container";
 import { CHARACTER } from "../Main/characters";
 import s from "./Characters.module.scss";
 
@@ -23,6 +22,7 @@ const Characters = () => {
           if (index < 5) {
             return (
               <CharacterCard
+                key={item.id}
                 name={item.name}
                 src={item.thumbnail.path}
                 description={item.description}
