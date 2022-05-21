@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logoPng from "../../assets/logo.png";
 import Container from "../Container";
 import s from "./Header.module.scss";
@@ -17,7 +17,6 @@ const Header = () => {
 
   useEffect(() => {
     const onScroll = () => setSmall(window.scrollY);
-    // window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll);
     return () => {
       window.removeEventListener("scroll", onScroll);
@@ -40,7 +39,12 @@ const Header = () => {
           <ul className={s.nav}>
             {MENU.map((item, index) => (
               <li key={index}>
-                <Link to={item.url}>{item.name}</Link>
+                <NavLink
+                  to={item.url}
+                  className={({ isActive }) => (isActive ? s.active : null)}
+                >
+                  {item.name}
+                </NavLink>
               </li>
             ))}
           </ul>

@@ -8,8 +8,6 @@ import Button from "../Button/Button";
 import Image from "../Image";
 
 const Slider = () => {
-  let count = 1;
-
   return (
     <section className={s.section}>
       <div className={s.slider}>

@@ -13,12 +13,11 @@ export default function Button({ isBlack, onClick, children }) {
 
 Button.defaultProps = {
   isBlack: false,
-  onClick: "Image",
   children: "ClickMe",
 };
 
 Button.propTypes = {
   isBlack: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   children: PropTypes.node,
 };

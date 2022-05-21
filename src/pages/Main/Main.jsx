@@ -23,7 +23,6 @@ export default function Main() {
   return (
     <>
       <Slider />
-
       <section className={s.cardSection}>
         <Container>
           <div className={s.cardTitle}>
