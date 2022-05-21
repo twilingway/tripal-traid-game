@@ -15,6 +15,7 @@ const Characters = () => {
       })
     );
   };
+
   return (
     <div className={s.root}>
       <div className={s.cards}>

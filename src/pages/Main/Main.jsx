@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import CharacterCard from "../../components/CharacterCard";
 import Container from "../../components/Container";
 import Heading from "../../components/Heading";
 import Slider from "../../components/Slider";
-import { ScrollToTopOnMount } from "../Characters/Characters";
-
 import { CHARACTER } from "./characters";
 import s from "./Main.module.scss";
 
@@ -22,7 +20,6 @@ export default function Main() {
     );
   };
 
-  window.scrollTo(0, 0);
   return (
     <>
       <Slider />
