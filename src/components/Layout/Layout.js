@@ -9,28 +9,35 @@ const Layout = () => {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    const handleLoad = () => {
-      if (!hash) {
-        window.scrollTo(0, 0);
-      } else {
-        const element = document.getElementById(hash);
+    if (!hash) {
+      window.scrollTo(0, 0);
+    } else {
+      const element = document.getElementById(hash);
 
-        if (element) {
-          element.scrollIntoView({
-            block: "center",
-            behavior: "smooth",
-          });
-        }
+      if (element) {
+        element.scrollIntoView({
+          block: "center",
+          behavior: "smooth",
+        });
+
+        window.addEventListener(
+          "load",
+          () => {
+            element.scrollIntoView({
+              block: "center",
+              behavior: "smooth",
+            });
+          },
+          { once: true }
+        );
       }
-    };
-    window.addEventListener("load", handleLoad);
-    return () => window.removeEventListener("load", handleLoad);
+    }
   }, [pathname, hash, id]);
 
   return (
     <div className={s.root}>
       <Header />
-      {<Outlet />}
+      <Outlet />
       <Footer />
     </div>
   );
