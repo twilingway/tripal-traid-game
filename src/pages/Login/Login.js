@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ReactComponent as Pen } from "../../assets/icon-pen.svg";
 import Logo from "../../assets/logo.png";
 import Footer from "../../components/Footer";
@@ -17,12 +17,28 @@ const Login = () => {
     setIsRegisterOpen(false);
   };
 
-  const handleFormChange = (event) => {
+  const handleInputChange = (event) => {
     setForm((prev) => ({
       ...prev,
       [event.target.name]: event.target.value,
     }));
   };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    if (isRegisterOpen) {
+      if (form.password !== form.repeat) {
+        alert("пароли не совпадают");
+        return;
+      }
+    }
+    console.log("loginForm :>> ", form);
+    setForm({});
+  };
+
+  useEffect(() => {
+    setForm({});
+  }, [isRegisterOpen]);
 
   return (
     <div className={s.root}>
@@ -33,7 +49,7 @@ const Login = () => {
         <div className={s.card}></div>
         <div className={s.card}>
           <h1 className={s.title}>Login</h1>
-          <form onChange={handleFormChange}>
+          <form onSubmit={handleFormSubmit}>
             <div className={s.inputContainer}>
               <input
                 type="email"
@@ -41,6 +57,8 @@ const Login = () => {
                 required="required"
                 name="email"
                 placeholder=" "
+                onChange={handleInputChange}
+                value={form.email ?? ""}
               />
               <label htmlFor="#email">Email</label>
               <div className={s.bar}></div>
@@ -52,6 +70,8 @@ const Login = () => {
                 required="required"
                 name="password"
                 placeholder=" "
+                onChange={handleInputChange}
+                value={form.password ?? ""}
               />
               <label htmlFor="#password">Password</label>
               <div className={s.bar}></div>
@@ -71,9 +91,16 @@ const Login = () => {
             Register
             <div className={s.close} onClick={handleCloseRegister}></div>
           </h1>
-          <form>
+          <form onSubmit={handleFormSubmit}>
             <div className={s.inputContainer}>
-              <input type="email" id="#signup-email" required="required" />
+              <input
+                type="email"
+                id="#signup-email"
+                required="required"
+                name="email"
+                onChange={handleInputChange}
+                value={form.email ?? ""}
+              />
               <label htmlFor="#signup-email">Email</label>
               <div className={s.bar}></div>
             </div>
@@ -82,6 +109,9 @@ const Login = () => {
                 type="password"
                 id="#signup-password"
                 required="required"
+                name="password"
+                onChange={handleInputChange}
+                value={form.password ?? ""}
               />
               <label htmlFor="#signup-password">Password</label>
               <div className={s.bar}></div>
@@ -91,6 +121,9 @@ const Login = () => {
                 type="password"
                 id="#signup-repeat-password"
                 required="required"
+                name="repeat"
+                onChange={handleInputChange}
+                value={form.repeat ?? ""}
               />
               <label htmlFor="#signup-repeat-password">Repeat Password</label>
               <div className={s.bar}></div>
