@@ -4,7 +4,7 @@ import About from "./pages/About";
 import Biography from "./pages/Biography";
 import Characters from "./pages/Characters";
 import Contacts from "./pages/Contacts";
-import Login from "./pages/Login/Login";
+import Login from "./pages/Login";
 import Main from "./pages/Main";
 
 function App() {
