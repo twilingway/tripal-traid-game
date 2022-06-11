@@ -1,8 +1,10 @@
 import cn from "classnames";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ReactComponent as Pen } from "../../assets/icon-pen.svg";
 import Logo from "../../assets/logo.png";
+import Button from "../../components/Button";
 import Footer from "../../components/Footer";
+import Input from "../../components/Input/Input";
 import s from "./Login.module.scss";
 
 const Login = () => {
@@ -50,36 +52,29 @@ const Login = () => {
         <div className={s.card}>
           <h1 className={s.title}>Login</h1>
           <form onSubmit={handleFormSubmit}>
-            <div className={s.inputContainer}>
-              <input
-                type="email"
-                id="#email"
-                required="required"
-                name="email"
-                placeholder=" "
-                onChange={handleInputChange}
-                value={form.email ?? ""}
-              />
-              <label htmlFor="#email">Email</label>
-              <div className={s.bar}></div>
-            </div>
-            <div className={s.inputContainer}>
-              <input
-                type="password"
-                id="#password"
-                required="required"
-                name="password"
-                placeholder=" "
-                onChange={handleInputChange}
-                value={form.password ?? ""}
-              />
-              <label htmlFor="#password">Password</label>
-              <div className={s.bar}></div>
-            </div>
+            <Input
+              type="email"
+              id="#email"
+              required
+              name="email"
+              value={form.email ?? ""}
+              label="Email"
+              onChange={handleInputChange}
+            />
+            <Input
+              type="password"
+              id="#password"
+              required
+              name="password"
+              value={form.password ?? ""}
+              label="Password"
+              onChange={handleInputChange}
+            />
+
             <div className={s.buttonContainer}>
-              <button>
+              <Button>
                 <span>Go</span>
-              </button>
+              </Button>
             </div>
           </form>
         </div>
@@ -92,46 +87,44 @@ const Login = () => {
             <div className={s.close} onClick={handleCloseRegister}></div>
           </h1>
           <form onSubmit={handleFormSubmit}>
-            <div className={s.inputContainer}>
-              <input
-                type="email"
-                id="#signup-email"
-                required="required"
-                name="email"
-                onChange={handleInputChange}
-                value={form.email ?? ""}
-              />
-              <label htmlFor="#signup-email">Email</label>
-              <div className={s.bar}></div>
-            </div>
-            <div className={s.inputContainer}>
-              <input
-                type="password"
-                id="#signup-password"
-                required="required"
-                name="password"
-                onChange={handleInputChange}
-                value={form.password ?? ""}
-              />
-              <label htmlFor="#signup-password">Password</label>
-              <div className={s.bar}></div>
-            </div>
-            <div className={s.inputContainer}>
-              <input
-                type="password"
-                id="#signup-repeat-password"
-                required="required"
-                name="repeat"
-                onChange={handleInputChange}
-                value={form.repeat ?? ""}
-              />
-              <label htmlFor="#signup-repeat-password">Repeat Password</label>
-              <div className={s.bar}></div>
-            </div>
+            <Input
+              type="email"
+              id="#signup-email"
+              required
+              name="email"
+              value={form.email ?? ""}
+              label="Email"
+              isAlt
+              isActive={isRegisterOpen}
+              onChange={handleInputChange}
+            />
+            <Input
+              type="password"
+              id="#signup-password"
+              required
+              name="password"
+              value={form.password ?? ""}
+              label="Password"
+              isAlt
+              isActive={isRegisterOpen}
+              onChange={handleInputChange}
+            />
+            <Input
+              type="password"
+              id="#signup-repeat-password"
+              required
+              name="repeat"
+              value={form.repeat ?? ""}
+              label="Repeat Password"
+              isAlt
+              isActive={isRegisterOpen}
+              onChange={handleInputChange}
+            />
+
             <div className={s.buttonContainer}>
-              <button>
+              <Button>
                 <span>Register</span>
-              </button>
+              </Button>
             </div>
           </form>
         </div>

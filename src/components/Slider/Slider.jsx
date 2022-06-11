@@ -4,7 +4,7 @@ import Container from "../Container";
 import s from "./Slider.module.scss";
 
 import logoPng from "../../assets/logo.png";
-import Button from "../Button/Button";
+import Button from "../Button/";
 import Image from "../Image";
 
 const Slider = () => {
