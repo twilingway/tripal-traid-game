@@ -2,42 +2,14 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import s from "./Input.module.scss";
 
-const Input = ({
-  type,
-  id,
-  required,
-  name,
-  value,
-  onChange,
-  label,
-  isAlt,
-  isActive,
-}) => {
+const Input = ({ label, isAlt, isActive, ...rest }) => {
   return (
     <div
       className={cn({ [s.active]: isActive, [s.alt]: isAlt }, s.inputContainer)}
     >
-      {onChange ? (
-        <input
-          type={type}
-          id={id}
-          required={required}
-          name={name}
-          placeholder=" "
-          onChange={onChange}
-          value={value}
-        />
-      ) : (
-        <input
-          type={type}
-          id={id}
-          required={required}
-          name={name}
-          placeholder=" "
-        />
-      )}
+      <input {...rest} placeholder=" " />
 
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={rest.id}>{label}</label>
       <div className={s.bar}></div>
     </div>
   );
