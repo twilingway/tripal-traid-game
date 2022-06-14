@@ -55,7 +55,7 @@ const Login = () => {
             <Input
               type="email"
               id="#email"
-              required
+              required={true}
               name="email"
               value={form.email ?? ""}
               label="Email"
@@ -64,7 +64,7 @@ const Login = () => {
             <Input
               type="password"
               id="#password"
-              required
+              required={true}
               name="password"
               value={form.password ?? ""}
               label="Password"
