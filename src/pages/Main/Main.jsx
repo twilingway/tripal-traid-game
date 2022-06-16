@@ -10,17 +10,6 @@ import s from "./Main.module.scss";
 export default function Main() {
   const { character, handleLikeClick } = useContext(Context);
 
-  // const handleLikeClick = (id) => {
-  //   setCharacter((prev) =>
-  //     prev.map((item) => {
-  //       if (item.id === id) {
-  //         return { ...item, isLike: !item.isLike };
-  //       }
-  //       return item;
-  //     })
-  //   );
-  // };
-
   return (
     <>
       <Slider />
