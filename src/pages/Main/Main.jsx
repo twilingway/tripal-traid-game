@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { Context } from "../../App";
+import { CharacterContext } from "../../CharacterContextProvider";
+
 import CharacterCard from "../../components/CharacterCard";
 import Container from "../../components/Container";
 import Heading from "../../components/Heading";
@@ -8,7 +9,7 @@ import Slider from "../../components/Slider";
 import s from "./Main.module.scss";
 
 export default function Main() {
-  const { character, handleLikeClick } = useContext(Context);
+  const { character, handleLikeClick } = useContext(CharacterContext);
 
   return (
     <>

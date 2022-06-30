@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import { Context } from "../../App";
+import { CharacterContext } from "../../CharacterContextProvider";
+
 import CharacterCard from "../../components/CharacterCard";
 
 import s from "./Characters.module.scss";
 
 const Characters = () => {
-  const { character, handleLikeClick } = useContext(Context);
+  const { character, handleLikeClick } = useContext(CharacterContext);
 
   return (
     <div className={s.root}>

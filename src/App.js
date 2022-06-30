@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import CharacterContextProvider from "./CharacterContextProvider";
 import Layout from "./components/Layout";
 import About from "./pages/About";
 import Biography from "./pages/Biography";
@@ -7,31 +7,10 @@ import Characters from "./pages/Characters";
 import Contacts from "./pages/Contacts";
 import Login from "./pages/Login";
 import Main from "./pages/Main";
-import { CHARACTER } from "./pages/Main/characters";
-
-export const Context = createContext(null);
 
 function App() {
-  const [character, setCharacter] = useState(() => {
-    return JSON.parse(localStorage.getItem("character")) || CHARACTER;
-  });
-
-  const handleLikeClick = (id) => {
-    setCharacter((prev) =>
-      prev.map((item) => {
-        if (item.id === id) {
-          return { ...item, isLike: !item.isLike };
-        }
-        return item;
-      })
-    );
-  };
-  useEffect(() => {
-    localStorage.setItem("character", JSON.stringify(character));
-  }, [character]);
-
   return (
-    <Context.Provider value={{ character, handleLikeClick }}>
+    <CharacterContextProvider>
       <Routes>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/" element={<Layout />}>
@@ -42,7 +21,7 @@ function App() {
           <Route path="contacts" element={<Contacts />} />
         </Route>
       </Routes>
-    </Context.Provider>
+    </CharacterContextProvider>
   );
 }
 
