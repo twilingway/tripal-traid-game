@@ -1,24 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { CharacterContext } from "../../CharacterContextProvider";
+
 import CharacterCard from "../../components/CharacterCard";
 import Container from "../../components/Container";
 import Heading from "../../components/Heading";
 import Slider from "../../components/Slider";
-import { CHARACTER } from "./characters";
+
 import s from "./Main.module.scss";
 
 export default function Main() {
-  const [character, setCharacter] = useState(CHARACTER);
-
-  const handleLikeClick = (id) => {
-    setCharacter((prev) =>
-      prev.map((item) => {
-        if (item.id === id) {
-          return { ...item, isLike: !item.isLike };
-        }
-        return item;
-      })
-    );
-  };
+  const { character, handleLikeClick } = useContext(CharacterContext);
 
   return (
     <>
@@ -44,7 +35,7 @@ export default function Main() {
                     humanName={item.humanName}
                     id={item.id}
                     isLike={item.isLike}
-                    onLikeClick={handleLikeClick}
+                    onLikeClick={() => handleLikeClick(item.id)}
                   />
                 </div>
               );

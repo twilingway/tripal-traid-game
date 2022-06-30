@@ -1,27 +1,19 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { CharacterContext } from "../../CharacterContextProvider";
+
 import CharacterCard from "../../components/CharacterCard";
-import { CHARACTER } from "../Main/characters";
+
 import s from "./Characters.module.scss";
 
 const Characters = () => {
-  const [character, setCharacter] = useState(CHARACTER);
-  const handleLikeClick = (id) => {
-    setCharacter((prev) =>
-      prev.map((item) => {
-        if (item.id === id) {
-          return { ...item, isLike: !item.isLike };
-        }
-        return item;
-      })
-    );
-  };
+  const { character, handleLikeClick } = useContext(CharacterContext);
 
   return (
     <div className={s.root}>
       <div className={s.cards}>
-        {character.map((item, index) => {
-          if (index < 5) {
-            return (
+        {character.reduce((cards, item, index) => {
+          if (index <= 5) {
+            cards.push(
               <CharacterCard
                 key={item.id}
                 name={item.name}
@@ -30,11 +22,12 @@ const Characters = () => {
                 humanName={item.humanName}
                 id={item.id}
                 isLike={item.isLike}
-                onLikeClick={handleLikeClick}
+                onLikeClick={() => handleLikeClick(item.id)}
               />
             );
           }
-        })}
+          return cards;
+        }, [])}
       </div>
     </div>
   );

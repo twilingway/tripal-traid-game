@@ -4,7 +4,7 @@ import { ReactComponent as Pen } from "../../assets/icon-pen.svg";
 import Logo from "../../assets/logo.png";
 import Button from "../../components/Button";
 import Footer from "../../components/Footer";
-import Input from "../../components/Input/Input";
+import Input from "../../components/Input/";
 import s from "./Login.module.scss";
 
 const Login = () => {
